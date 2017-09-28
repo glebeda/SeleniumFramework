@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import ru.yandex.qatools.allure.annotations.Step;
 import utils.core.BasePage;
 
 
@@ -30,7 +31,25 @@ public class GooglePage extends BasePage {
         }
     }
 
-    By searchInput = By.cssSelector("[selenium-id='loginField']");
+    By searchInput = By.cssSelector("[id='lst-ib']");
+    By searchButtonLocator = By.cssSelector("[name='btnK']");
+
+    @Step("Search in google")
+    public SearchResultPage search(String searchStr) {
+        WebElement search = getSearchInput();
+        search.click();
+        getSearchInput().sendKeys(searchStr);
+        return searchButtonClick();
+    }
+
+    private WebElement getSearchButton() {
+        return driver.findElement(searchButtonLocator);
+    }
+
+    private SearchResultPage searchButtonClick() {
+        getSearchButton().click();
+        return new SearchResultPage(driver);
+    }
 
 /*
     @Step("Check google field displayed property")

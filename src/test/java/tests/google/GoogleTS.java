@@ -28,9 +28,7 @@ public class GoogleTS extends BaseTest {
 
     @BeforeMethod
     public void setUp() {
-        try {
-            page = new GooglePage(driver);
-        } catch (IllegalStateException e){}
+        page = new GooglePage(driver);
     }
 
     @TestCaseId("ID-3417")
@@ -38,7 +36,8 @@ public class GoogleTS extends BaseTest {
     @Stories("ID-1700")
     @Test
     public void searchTest() throws IOException {
-        System.out.println("We`ve done it, Man!");
+        System.out.println("We`ve done it, Man! Lets start the test...");
+        assert(page.search("Selenium webdriver").getResultStatedDisplayedProperty());
 /*
         assert(page.getLoginBtnDisplayedProperty());
         assert(page.getLoginFieldDisplayedProperty());
@@ -51,7 +50,8 @@ public class GoogleTS extends BaseTest {
     @Stories("ID-1700")
     @Test
     public void greatTest() throws InterruptedException {
-/*
+        System.out.println("Just an empty second test");
+        /*
         page.loginIntoApplication(adminData.getLogin(), adminData.getPass());
         page.verifyLoggedUserName(adminData.getFirstName(), adminData.getLastName());
 */
