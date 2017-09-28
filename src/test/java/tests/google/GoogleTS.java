@@ -1,5 +1,6 @@
 package tests.google;
 
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pageObjects.google.GooglePage;
@@ -20,8 +21,8 @@ import java.io.IOException;
  * Time: 15:21
  * To change this template use File | Settings | File Templates.
  */
-@Features("Login page")
-@Title("Login page test suite")
+@Features("Google search page")
+@Title("Search test suite")
 
 public class GoogleTS extends BaseTest {
     private GooglePage page;
@@ -38,23 +39,15 @@ public class GoogleTS extends BaseTest {
     public void searchTest() throws IOException {
         System.out.println("We`ve done it, Man! Lets start the test...");
         assert(page.search("Selenium webdriver").getResultStatedDisplayedProperty());
-/*
-        assert(page.getLoginBtnDisplayedProperty());
-        assert(page.getLoginFieldDisplayedProperty());
-        assert(page.getPassFieldDisplayedProperty());
-*/
     }
 
     @TestCaseId("ID-3418")
     @Title("Second test")
     @Stories("ID-1700")
     @Test
-    public void greatTest() throws InterruptedException {
-        System.out.println("Just an empty second test");
-        /*
-        page.loginIntoApplication(adminData.getLogin(), adminData.getPass());
-        page.verifyLoggedUserName(adminData.getFirstName(), adminData.getLastName());
-*/
+    public void negativeTest() throws InterruptedException {
+        System.out.println("Just an empty negative test");
+        Assert.assertTrue(false, "Wow, something went wrong.");
     }
 
 }

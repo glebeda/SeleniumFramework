@@ -1,9 +1,6 @@
 package pageObjects.google;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.yandex.qatools.allure.annotations.Step;
@@ -47,7 +44,9 @@ public class GooglePage extends BasePage {
     }
 
     private SearchResultPage searchButtonClick() {
-        getSearchButton().click();
+        //TODO: this method needs to be reworked
+        //getSearchButton().click(); not stable solution because of dropdown
+        getSearchInput().sendKeys(Keys.RETURN);
         return new SearchResultPage(driver);
     }
 

@@ -9,7 +9,6 @@
     <properties>
         <aspectj.version>1.8.5</aspectj.version>
         <allure.version>1.4.23</allure.version>
-        <cxf.version>2.3.4</cxf.version>
     </properties>
     <dependencies>
         <dependency>
@@ -17,35 +16,6 @@
             <artifactId>selenium-java</artifactId>
             <version>3.0.1</version>
         </dependency>
-
-<!--        <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-frontend-jaxws</artifactId>
-            <version>${cxf.version}</version>
-        </dependency>
-        &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-ws-security &ndash;&gt;
-        <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-ws-security</artifactId>
-            <version>${cxf.version}</version>
-        </dependency>
-        &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-bindings-soap &ndash;&gt;
-        <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-bindings-soap</artifactId>
-            <version>${cxf.version}</version>
-        </dependency>
-        &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-transports-http &ndash;&gt;
-        <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-transports-http</artifactId>
-            <version>${cxf.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-transports-http-jetty</artifactId>
-            <version>${cxf.version}</version>
-        </dependency>-->
 
         <dependency>
             <groupId>ru.yandex.qatools.allure</groupId>
@@ -133,8 +103,7 @@
             </exclusions>
         </dependency>
     </dependencies>
-<!--    <build>
-        <sourceDirectory>${basedir}/src/main/generated</sourceDirectory>
+    <build>
         <resources>
             <resource>
                 <directory>${basedir}\test\resources</directory>
@@ -153,24 +122,6 @@
         </testResources>
         <plugins>
             <plugin>
-                <artifactId>maven-clean-plugin</artifactId>
-                <version>3.0.0</version>
-                <configuration>
-                    <verbose>true</verbose>
-                    <failOnError>true</failOnError>
-                    <filesets>
-                        <fileset>
-                            <directory>${basedir}/src/main/generated</directory>
-                            <followSymlinks>false</followSymlinks>
-                            <includes>
-                                <include>**\*.java</include>
-                                <include>**\*.wsdl</include>
-                            </includes>
-                        </fileset>
-                    </filesets>
-                </configuration>
-            </plugin>
-            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.5</version>
@@ -180,40 +131,6 @@
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.cxf</groupId>
-                <artifactId>cxf-codegen-plugin</artifactId>
-                <version>${cxf.version}</version>
-                <executions>
-                    <execution>
-                        <id>generate-sources</id>
-                        <phase>generate-sources</phase>
-                        <configuration>
-                            <sourceRoot>${project.basedir}/src/main/generated</sourceRoot>
-                            <wsdlOptions>
-                                <wsdlOption>
-                                    <wsdl>${project.basedir}/resources/ConfigurationWS.wsdl</wsdl>
-                                    <wsdlLocation>file:ConfigurationWS.wsdl</wsdlLocation>
-                                    <extraargs>
-                                        <extraarg>-client</extraarg>
-                                    </extraargs>
-                                </wsdlOption>
-                                <wsdlOption>
-                                    <wsdl>${project.basedir}/resources/NMSWebservice.wsdl</wsdl>
-                                    <wsdlLocation>file:NMSWebservice.wsdl</wsdlLocation>
-                                    <extraargs>
-                                        <extraarg>-client</extraarg>
-                                    </extraargs>
-                                </wsdlOption>
-                            </wsdlOptions>
-                        </configuration>
-                        <goals>
-                            <goal>wsdl2java</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -236,7 +153,7 @@
                 </dependencies>
             </plugin>
         </plugins>
-    </build>-->
+    </build>
     <profiles>
         <profile>
             <id>glebeda</id>
