@@ -1,5 +1,6 @@
 package tests.google;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -8,8 +9,11 @@ import ru.yandex.qatools.allure.annotations.Features;
 import ru.yandex.qatools.allure.annotations.Stories;
 import ru.yandex.qatools.allure.annotations.TestCaseId;
 import ru.yandex.qatools.allure.annotations.Title;
+import testDataConstructors.SearchRequestData;
 import utils.core.BaseTest;
+import utils.core.Config;
 
+import javax.naming.directory.SearchResult;
 import java.io.IOException;
 
 
@@ -27,6 +31,9 @@ import java.io.IOException;
 public class GoogleTS extends BaseTest {
     private GooglePage page;
 
+    @Autowired
+    private SearchRequestData webdriverSearch;
+
     @BeforeMethod
     public void setUp() {
         page = new GooglePage(driver);
@@ -38,7 +45,7 @@ public class GoogleTS extends BaseTest {
     @Test
     public void searchTest() throws IOException {
         System.out.println("We`ve done it, Man! Lets start the test...");
-        assert(page.search("Selenium webdriver").getResultStatedDisplayedProperty());
+        assert(page.search(webdriverSearch.getSearchRequest()).getResultStatedDisplayedProperty());
     }
 
     @TestCaseId("ID-3418")
@@ -46,8 +53,8 @@ public class GoogleTS extends BaseTest {
     @Stories("ID-1700")
     @Test
     public void negativeTest() throws InterruptedException {
-        System.out.println("Just an empty negative test");
-        Assert.assertTrue(false, "Wow, something went wrong.");
+        System.out.println("Just an empty test");
+        //Assert.assertTrue(false, "Wow, something went wrong.");
     }
 
 }
